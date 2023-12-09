@@ -21,7 +21,7 @@ int read_and_execute_instructions(FILE *file) {
     while (fscanf(file, "%s", opcode) != EOF) {
         opcode_valid = 1;  /* Assume the opcode is valid initially */
 
-        if (strcmp(opcode, "push") == 0) {
+        if (strcasecmp(opcode, "push") == 0) {
             /* Handle push instruction */
             if (fscanf(file, "%d", &value) != 1) {
                 fprintf(stderr, "L%zu: usage: push integer\n", line_number);
@@ -29,13 +29,13 @@ int read_and_execute_instructions(FILE *file) {
             } else {
                 push(&stack, value);
             }
-        } else if (strcmp(opcode, "pint") == 0) {
+        } else if (strcasecmp(opcode, "pint") == 0) {
             /* Handle pint instruction */
             pint(&stack);
-        } else if (strcmp(opcode, "pall") == 0) {
+        } else if (strcasecmp(opcode, "pall") == 0) {
             /* Handle pall instruction */
             pall(&stack);
-        } else if (strcmp(opcode, "pnit") == 0) {
+        } else if (strcasecmp(opcode, "pnit") == 0) {
             /* Handle pnit as a valid instruction without affecting the stack */
             printf("%s\n", opcode);
         } else {
