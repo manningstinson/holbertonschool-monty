@@ -35,9 +35,6 @@ int read_and_execute_instructions(FILE *file) {
         } else if (strcmp(opcode, "pnit") == 0) {
             /* Handle pnit as a valid instruction without affecting the stack */
             printf("%s\n", opcode);
-        } else if (strcmp(opcode, "pinte") == 0) {
-            /* Handle pinte instruction */
-            pinte(&stack);
         } else {
             /* Handle unknown command */
             fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
