@@ -15,8 +15,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    /* Initialize stack and other variables if needed */
-
     /* Read and execute instructions from the file */
     if (!read_and_execute_instructions(file)) {
         fprintf(stderr, "Error: Execution failed\n");
