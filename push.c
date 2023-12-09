@@ -9,13 +9,7 @@ void push(stack_t **stack, int value) {
         exit(EXIT_FAILURE);
     }
 
-    new_node->data = value;
+    new_node->n = value;
     new_node->next = *stack;
-    new_node->prev = NULL;
-
-    if (*stack) {
-        (*stack)->prev = new_node;
-    }
-
     *stack = new_node;
 }
