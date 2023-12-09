@@ -1,11 +1,12 @@
-
 #include "monty.h"
 
-void pall(stack_t **stack, unsigned int line_number)
-{
-    (void)stack; 
-    (void)line_number;
+void pall(stack_t **stack, unsigned int line_number) {
+    stack_t *temp = *stack;
 
-    /* Implementation of pall opcode */
+    /* Traverse the stack and print values */
+    while (temp) {
+        printf("%d\n", temp->n);
+        temp = temp->next;
+    }
 }
 
