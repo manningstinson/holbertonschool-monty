@@ -5,7 +5,7 @@ void pint(stack_t **stack) {
     if (*stack) {
         printf("%d\n", (*stack)->data);
     } else {
-        fprintf(stderr, "L<line_number>: can't pint, stack empty\n");
+        fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
         exit(EXIT_FAILURE);
     }
 }
