@@ -31,13 +31,16 @@ int read_and_execute_instructions(FILE *file) {
             pint(&stack);
         } else if (strcmp(opcode, "pnit") == 0) {
             /* Handle pnit as a valid instruction without affecting the stack */
-            fprintf(stderr, "L%zu: pnit is a valid instruction\n", line_number);
+            printf("%s ", opcode);
+            while (fgetc(file) != '\n');
         } else if (strcmp(opcode, "pall") == 0) {
             /* Handle pall instruction */
             pall(&stack);
         } else {
             /* Handle unknown command */
             fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
+            free_stack(&stack);
+            return 0;  /* Failed execution */
         }
 
         // Read and discard the rest of the line
