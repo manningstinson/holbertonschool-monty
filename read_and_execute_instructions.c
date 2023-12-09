@@ -34,11 +34,12 @@ int read_and_execute_instructions(FILE *file) {
             pall(&stack);
         } else {
             /* Handle unknown command */
-            fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
+            fprintf(stderr, "L%zu: unknown instruction %s - skipping\n", line_number, opcode);
+            fprintf(stderr, "Error: Execution failed\n");
+            // Read and discard the rest of the line
+            while (fgetc(file) != '\n');
+            continue;  /* Continue to the next line without processing further */
         }
-
-        // Read and discard the rest of the line
-        while (fgetc(file) != '\n');
 
         line_number++;
     }
