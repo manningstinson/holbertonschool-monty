@@ -16,7 +16,6 @@ int read_and_execute_instructions(FILE *file) {
     char opcode[256];
     int value;
     stack_t *stack = NULL;
-    int c;  // Variable to store characters read from file
 
     while (fscanf(file, "%s", opcode) != EOF) {
         if (strcmp(opcode, "push") == 0) {
@@ -35,11 +34,11 @@ int read_and_execute_instructions(FILE *file) {
             pall(&stack);
         } else {
             /* Handle unknown command */
-            fprintf(stderr, "L%zu: unknown instruction %s - skipping\n", line_number, opcode);
-
-            // Skip the rest of the line
-            while ((c = fgetc(file)) != '\n' && c != EOF);
+            fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
         }
+
+        // Read and discard the rest of the line
+        while (fgetc(file) != '\n');
 
         line_number++;
     }
