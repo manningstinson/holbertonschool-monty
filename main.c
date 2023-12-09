@@ -1,40 +1,24 @@
 #include "monty.h"
-#include <string.h>
+#include <stdio.h>
 
-size_t line_number = 1;
-
-int read_and_execute_instructions(FILE *file) {
-    char opcode[256];
-    int value;
-    stack_t *stack = NULL;
-
-    while (fscanf(file, "%s", opcode) != EOF) {
-        if (strcmp(opcode, "push") == 0) {
-            /* Handle push instruction */
-            if (fscanf(file, "%d", &value) != 1) {
-                fprintf(stderr, "L%zu: usage: push integer\n", line_number);
-                return 0;  /* Failed execution */
-            }
-            push(&stack, value);
-        } else if (strcmp(opcode, "pint") == 0) {
-            /* Handle pint instruction */
-            pint(&stack);
-        } else if (strcmp(opcode, "pall") == 0) {
-            /* Handle pall instruction */
-            pall(&stack);
-        } else {
-            /* Handle unknown command */
-            fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
-        }
-
-        // Read and discard the rest of the line
-        while (fgetc(file) != '\n');
-
-        line_number++;
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
     }
 
-    /* Free allocated memory and perform any cleanup if needed */
-    free(stack);
+    FILE *file = fopen(argv[1], "r");
+    if (!file) {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
 
-    return 1;  /* Successful execution */
+    if (!read_and_execute_instructions(file)) {
+        fprintf(stderr, "Error: Execution failed\n");
+        fclose(file);
+        exit(EXIT_FAILURE);
+    }
+
+    fclose(file);
+    return EXIT_SUCCESS;
 }
