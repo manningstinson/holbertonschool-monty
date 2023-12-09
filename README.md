@@ -1,2 +1,2 @@
 # holbertonschool-monty
-Rep for Holberton School - Monty Project
+Repo for Holberton School - Monty Project
