@@ -1,16 +1,7 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-size_t line_number = 1;  /* Define and initialize line_number */
-
-void free_stack(stack_t **stack) {
-    while (*stack) {
-        stack_t *temp = *stack;
-        *stack = (*stack)->next;
-        free(temp);
-    }
-}
+size_t line_number = 1;
 
 int read_and_execute_instructions(FILE *file) {
     char opcode[256];
@@ -32,12 +23,22 @@ int read_and_execute_instructions(FILE *file) {
         } else if (strcmp(opcode, "pall") == 0) {
             /* Handle pall instruction */
             pall(&stack);
+        } else if (strcmp(opcode, "pop") == 0) {
+            /* Handle pop instruction */
+            pop(&stack);
+        } else if (strcmp(opcode, "swap") == 0) {
+            /* Handle swap instruction */
+            swap(&stack);
+        } else if (strcmp(opcode, "add") == 0) {
+            /* Handle add instruction */
+            add(&stack);
         } else {
             /* Handle unknown command */
-            fprintf(stderr, "L%zu: unknown instruction %s - skipping\n", line_number, opcode);
-            int c;
-            while ((c = fgetc(file)) != '\n' && c != EOF);
+            fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
         }
+
+        // Read and discard the rest of the line
+        while (fgetc(file) != '\n');
 
         line_number++;
     }
