@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #include <stdlib.h>
+#include <stdio.h>
 
 /* Define stack structure if not already done in monty.h */
 typedef struct stack {
