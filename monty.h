@@ -11,6 +11,9 @@ typedef struct stack {
     struct stack *next;
 } stack_t;
 
+/* Global variable for line number */
+extern size_t line_number;
+
 /* Function prototypes */
 void push(stack_t **stack, int value);
 void pall(stack_t **stack);
@@ -22,4 +25,3 @@ int read_and_execute_instructions(FILE *file);
 void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */
-
