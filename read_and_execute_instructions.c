@@ -31,8 +31,7 @@ int read_and_execute_instructions(FILE *file) {
             pint(&stack);
         } else if (strcmp(opcode, "pnit") == 0) {
             /* Handle pnit as a valid instruction without affecting the stack */
-            printf("%s %d\n", opcode, value);
-            continue;  // Skip the rest of the loop
+            printf("%s\n", opcode);
         } else if (strcmp(opcode, "pall") == 0) {
             /* Handle pall instruction */
             pall(&stack);
