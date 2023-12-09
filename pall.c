@@ -1,9 +1,10 @@
 #include "monty.h"
 
-void pall(stack_t **stack) {
-    stack_t *current = *stack;
-    while (current) {
-        printf("%d\n", current->data);
-        current = current->next;
+void pint(stack_t **stack) {
+    if (*stack) {
+        printf("%d\n", (*stack)->data);
+    } else {
+        fprintf(stderr, "L%zu: can't pint, stack empty\n", line_number);
+        exit(EXIT_FAILURE);
     }
 }
