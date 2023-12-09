@@ -1,6 +1,8 @@
 #include "monty.h"
 #include <stdio.h>
 
+size_t line_number = 1;  /* Define and initialize line_number */
+
 void free_stack(stack_t **stack) {
     while (*stack) {
         stack_t *temp = *stack;
@@ -12,7 +14,6 @@ void free_stack(stack_t **stack) {
 int read_and_execute_instructions(FILE *file) {
     char opcode[256];
     int value;
-    size_t line_number = 1;
     stack_t *stack = NULL;
 
     while (fscanf(file, "%s", opcode) != EOF) {
@@ -44,4 +45,3 @@ int read_and_execute_instructions(FILE *file) {
 
     return 1;  /* Successful execution */
 }
-
