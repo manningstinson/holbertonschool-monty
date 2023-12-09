@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 void pint(stack_t **stack) {
     if (*stack) {
