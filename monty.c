@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     size_t len = 0;
     ssize_t read;
     (void)line;  // To silence the unused variable warning
-    unsigned int line_number = 1;
+   //  unsigned int line_number = 1;
 
     while ((read = getline(&line, &len, file)) != -1) {
         /* Remove the newline character if present */
