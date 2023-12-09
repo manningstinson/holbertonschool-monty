@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number) {
     arg = strtok(NULL, " \t\n");
 
     /* Check if there's an actual argument */
-    if (!arg || !isdigit(*arg) && *arg != '-' && *arg != '+') {
+    if (!arg || (!isdigit(*arg) && *arg != '-' && *arg != '+')) {
         fprintf(stderr, "L%u: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
@@ -35,8 +35,9 @@ void push(stack_t **stack, unsigned int line_number) {
     new_node->next = *stack;
 
     /* Update the previous node's prev pointer if the stack is not empty */
-    if (*stack)
+    if (*stack) {
         (*stack)->prev = new_node;
+    }
 
     /* Update the stack to point to the new node */
     *stack = new_node;
