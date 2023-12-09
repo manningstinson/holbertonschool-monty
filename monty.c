@@ -1,4 +1,4 @@
-#include "monty.h"  // Include your header file
+#include "monty.h"
 
 int main(int argc, char *argv[]) {
     /* Check for the correct number of command-line arguments */
@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
+    (void)line;  // To silence the unused variable warning
     unsigned int line_number = 1;
 
     while ((read = getline(&line, &len, file)) != -1) {
