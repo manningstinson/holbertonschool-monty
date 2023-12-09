@@ -10,7 +10,7 @@ extern size_t line_number;
  * Data structure for a stack (or doubly linked list)
  */
 typedef struct stack_s {
-    int data;  // Change 'n' to 'data'
+    int data;
     struct stack_s *next;
 } stack_t;
 
@@ -21,6 +21,8 @@ void pint(stack_t **stack);
 void pop(stack_t **stack);
 void swap(stack_t **stack);
 void add(stack_t **stack);
+void nop(stack_t **stack);  // Add this line
+
 int read_and_execute_instructions(FILE *file);
 void free_stack(stack_t **stack);
 
