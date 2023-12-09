@@ -14,13 +14,20 @@ void push(stack_t **stack, unsigned int line_number) {
     arg = strtok(NULL, " \t\n");
 
     /* Check if there's an actual argument */
-    if (!arg || (!isdigit(*arg) && *arg != '-' && *arg != '+')) {
+    if (!arg || (*arg != '-' && *arg != '+' && !isdigit(*arg))) {
         fprintf(stderr, "L%u: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
 
-    /* Convert string to integer using atoi */
-    value = atoi(arg);
+    /* Convert string to integer using strtol for better error handling */
+    char *endptr;
+    value = strtol(arg, &endptr, 10);
+
+    /* Check for conversion errors */
+    if (*endptr != '\0' && !isspace(*endptr)) {
+        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
+    }
 
     /* Allocate memory for a new node */
     stack_t *new_node = malloc(sizeof(stack_t));
