@@ -30,7 +30,7 @@ int read_and_execute_instructions(FILE *file) {
             /* Handle pint instruction */
             pint(&stack);
         } else if (strcmp(opcode, "pnit") == 0) {
-            /* Handle pnit as a valid instruction (no stack modification) */
+            /* Handle pnit as a valid instruction without affecting the stack */
             fprintf(stderr, "L%zu: pnit is a valid instruction\n", line_number);
         } else if (strcmp(opcode, "pall") == 0) {
             /* Handle pall instruction */
