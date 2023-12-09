@@ -1,6 +1,14 @@
 #include "monty.h"
 #include <stdio.h>
 
+void free_stack(stack_t **stack) {
+    while (*stack) {
+        stack_t *temp = *stack;
+        *stack = (*stack)->next;
+        free(temp);
+    }
+}
+
 int read_and_execute_instructions(FILE *file) {
     char opcode[256];
     int value;
@@ -12,6 +20,7 @@ int read_and_execute_instructions(FILE *file) {
             /* Handle push instruction */
             if (fscanf(file, "%d", &value) != 1) {
                 fprintf(stderr, "L%zu: usage: push integer\n", line_number);
+                free_stack(&stack);
                 return 0;  /* Failed execution */
             }
             push(&stack, value);
@@ -31,6 +40,7 @@ int read_and_execute_instructions(FILE *file) {
     }
 
     /* Free allocated memory and perform any cleanup if needed */
+    free_stack(&stack);
 
     return 1;  /* Successful execution */
 }

@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>  // Include this for strcmp
+#include <string.h>
 
 /* Define stack structure if not already done in monty.h */
 typedef struct stack {
@@ -19,6 +19,7 @@ void pop(stack_t **stack);
 void swap(stack_t **stack);
 void add(stack_t **stack);
 int read_and_execute_instructions(FILE *file);
+void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */
 
