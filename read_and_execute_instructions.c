@@ -34,11 +34,10 @@ int read_and_execute_instructions(FILE *file) {
             pall(&stack);
         } else {
             /* Handle unknown command */
-            fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
+            fprintf(stderr, "L%zu: unknown instruction %s - skipping\n", line_number, opcode);
+            int c;
+            while ((c = fgetc(file)) != '\n' && c != EOF);
         }
-
-        // Read and discard the rest of the line
-        while (fgetc(file) != '\n');
 
         line_number++;
     }
