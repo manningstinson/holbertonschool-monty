@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void pop(stack_t **stack) {
     if (*stack) {
