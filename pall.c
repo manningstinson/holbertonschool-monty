@@ -1,14 +1,13 @@
 #include "monty.h"
 
 void pall(stack_t **stack, unsigned int line_number) {
-    (void)line_number;  // To silence the unused parameter warning
+    (void)line_number;  // Unused parameter
+    stack_t *current = *stack;
 
-    stack_t *temp = *stack;
-
-    /* Traverse the stack and print values */
-    while (temp) {
-        printf("%d\n", temp->n);
-        temp = temp->next;
+    // Iterate through the stack and print each element
+    while (current) {
+        printf("%d\n", current->n);
+        current = current->next;
     }
 }
 

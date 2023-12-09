@@ -3,24 +3,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
 
-/* Define the stack structure */
+/**
+ * Struct for a stack element
+ */
 typedef struct stack_s {
     int n;
     struct stack_s *prev;
     struct stack_s *next;
 } stack_t;
 
-/* Function prototypes */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
+
+// Add other function prototypes as needed
 
 #endif /* MONTY_H */
 
