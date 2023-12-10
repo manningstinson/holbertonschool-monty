@@ -24,5 +24,7 @@ void add(stack_t **stack);
 void nop(stack_t **stack);
 void free_stack(stack_t **stack);
 int read_and_execute_instructions(FILE *file);
+void handle_unknown_instruction(const char *opcode);
+
 
 #endif /* MONTY_H */
