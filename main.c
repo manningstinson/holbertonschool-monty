@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 
 int main(int argc, char *argv[]) {
     /* Check for correct number of arguments */
