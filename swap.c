@@ -1,4 +1,4 @@
-include "monty.h"
+#include "monty.h"
 
 void swap(stack_t **stack) {
     if (*stack && (*stack)->next) {
