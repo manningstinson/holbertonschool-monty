@@ -2,7 +2,7 @@
 
 void swap(stack_t **stack) {
     if (*stack && (*stack)->next) {
-        int temp = (*stack)->data;  // Change 'n' to 'data'
+        int temp = (*stack)->data;
         (*stack)->data = (*stack)->next->data;
         (*stack)->next->data = temp;
     } else {
