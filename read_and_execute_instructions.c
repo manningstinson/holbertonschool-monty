@@ -32,6 +32,9 @@ int read_and_execute_instructions(FILE *file) {
         } else if (strcmp(opcode, "add") == 0) {
             /* Handle add instruction */
             add(&stack);
+        } else if (strcmp(opcode, "nop") == 0) {
+            /* Handle nop instruction */
+            nop(&stack);
         } else {
             /* Handle unknown command */
             fprintf(stderr, "L%zu: unknown instruction %s\n", line_number, opcode);
