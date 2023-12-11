@@ -35,6 +35,4 @@ int main(int argc, char **argv) {
     }
 
     /* Execute the instruction */
-    int result = execute_simple_instruction(instruction, &top, line_number);
-
-    /* Handle
+    int result = execute_simple_instruction(instruction, &
