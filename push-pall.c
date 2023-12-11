@@ -1,7 +1,7 @@
 #include "monty.h"
+#include <stdio.h> // Added header for printf and strtok
 
-void push(stack_t **stack, unsigned int line_number)
-{
+void push(stack_t **stack, int data) {
 	int value;
 	char *str;
 
@@ -43,7 +43,7 @@ void pall(stack_t **stack) {
   }
 }
 
-void stack_print(stack_t *node) { // Modified function signature
+void stack_print(stack_t *node) {
   if (!node) {
     return;
   }
