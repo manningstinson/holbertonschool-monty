@@ -8,6 +8,7 @@ Instruction parse_instruction(int bytecode) {
     case 4: return PALL;
     case 5: return NOP;
     case 6: return ADD;
+    case 7: return SWAP;
     default: return UNKNOWN;
   }
 }
