@@ -20,7 +20,7 @@ typedef struct instruction_s {
 #define PINT 3
 
 void push(stack_t **stack, int data);
-void pall(stack_t **stack);
+void pall(stack_t **stack); // Removed line_number and order parameters
 void pint(stack_t **stack);
 void pop(stack_t **stack);
 void swap(stack_t **stack);
@@ -29,5 +29,7 @@ void nop(stack_t **stack);
 void free_stack(stack_t **stack);
 
 void exit_error(int status, char *file, char *format, ...);
+
+// Add definition for stack_overflow here
 
 #endif
