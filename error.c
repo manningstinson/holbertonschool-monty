@@ -12,7 +12,7 @@ void exit_error(int errcode, char *filename, const char *format, ...) {
 
   switch (errcode) {
     case INVALID_BYTECODE:
-      printf("Error: Unknown instruction %d\n", bytecode);
+      printf("Error: Unknown instruction\n");
       break;
     case STACK_UNDERFLOW:
       printf("Error: Stack underflow\n");
@@ -30,3 +30,4 @@ void exit_error(int errcode, char *filename, const char *format, ...) {
   va_end(args);
   exit(errcode);
 }
+
