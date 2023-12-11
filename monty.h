@@ -48,12 +48,13 @@ instruction_t parse_instruction(int bytecode);
 int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number);
 
 /* Define instruction enum without tag */
-enum {
+typedef enum {
   PUSH,
   POP,
   PINT,
   /* ... other instructions ... */
   UNKNOWN = -1
-};
+} instruction_type;
+
 
 #endif
