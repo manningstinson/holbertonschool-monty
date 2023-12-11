@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
 
