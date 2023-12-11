@@ -1,15 +1,13 @@
-#include "monty.h" /* Includes necessary header file for data structures and function definitions */
+#include "monty.h"
 
-int add(stack_t **stack, unsigned int line_number) /* Function definition for `add` operation */
-{
-    if (!*stack || !(*stack)->next) { /* Check if stack is empty or only has one element */
-        fprintf(stderr, "L%u: can't add, stack too short\n", line_number); /* Print error message if stack is too short */
-        return EXIT_FAILURE; /* Return error code */
+int add(stack_t **stack, unsigned int line_number) {
+    if (!*stack || !(*stack)->next) {
+        return EXIT_FAILURE;
     }
 
-    stack_t *node = (*stack)->next; /* Get a pointer to the second element */
-    node->n += (*stack)->n; /* Add the top element's value to the second element's value */
-    pop(stack); /* Remove the top element from the stack */
+    stack_t *node = (*stack)->next;
+    node->n += (*stack)->n;
+    pop(stack);
 
-    return EXIT_SUCCESS; /* Return success code */
+    return EXIT_SUCCESS;
 }
