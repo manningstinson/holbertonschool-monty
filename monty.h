@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stddef.h>
+
 typedef struct stack_s {
   int n;
   struct stack_s *prev;
