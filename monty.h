@@ -30,7 +30,7 @@ typedef struct instruction_s {
 /* Function declarations */
 void push(stack_t **stack, int data);
 void pall(stack_t **stack);
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number); // Added a semicolon here
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack);
 void add(stack_t **stack, unsigned int line_number);
@@ -39,8 +39,6 @@ void free_stack(stack_t **stack);
 
 /* Error handling function */
 void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
-
-
 
 /* Function to check for stack overflow (implementation required) */
 bool stack_overflow(stack_t *stack);
@@ -61,6 +59,5 @@ typedef enum {
   /* ... other instructions ... */
   UNKNOWN = -1
 } instruction_type;
-
 
 #endif
