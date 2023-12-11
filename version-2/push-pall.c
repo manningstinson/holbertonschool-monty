@@ -21,19 +21,24 @@ void push(stack_t **stack, unsigned int line_number)
 			"L%u: stack overflow\n", line_number);
 	}
 
-	stack_push(*stack, value);
+	stack_t *new_node = malloc(sizeof(stack_t));
+	if (!new_node) {
+		exit_error(EXIT_FAILURE, NULL,
+			"L%u: Error allocating memory\n", line_number);
+	}
+
+	new_node->n = value;
+	stack_push(*stack, new_node);
 }
 
 void pall(stack_t **stack, unsigned int line_number, int order)
 {
-	stack_t *node;
-
 	if (!stack || !*stack) {
 		return;
 	}
 
-	node = *stack;
 	if (order == PALL_TOP_DOWN) {
+		stack_t *node = *stack;
 		while (node) {
 			printf("%d\n", node->n);
 			node = node->next;
@@ -41,4 +46,13 @@ void pall(stack_t **stack, unsigned int line_number, int order)
 	} else if (order == PALL_BOTTOM_UP) {
 		stack_print(*stack);
 	}
+}
+
+void stack_print(stack_t *node)
+{
+	if (!node) {
+		return;
+	}
+	stack_print(node->next);
+	printf("%d\n", node->n);
 }
