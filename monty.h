@@ -34,7 +34,7 @@ void nop(stack_t **stack);
 void free_stack(stack_t **stack);
 
 /* Error handling function */
-void exit_error(int status, char *file, char *format, ...);
+void exit_error(int errcode, char *filename, const char *format, ...);
 
 /* Function to check for stack overflow (implementation required) */
 bool stack_overflow(stack_t *stack);
