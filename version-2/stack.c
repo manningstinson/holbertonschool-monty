@@ -18,17 +18,19 @@ void push(Stack **top, int value) {
   *top = new_node;
 }
 
-int pop(Stack **top) {
-  if (*top == NULL) {
-    return -1; // Error: Stack underflow
-  }
+int pop(Stack **top)
+{
+    if (*top == NULL) {
+        exit_error(EXIT_FAILURE, NULL, "Stack underflow\n");
+        return EXIT_FAILURE; // Replace with appropriate error code
+    }
 
-  int value = (*top)->value;
-  Stack *tmp = *top;
-  *top = (*top)->next;
-  free(tmp);
+    int value = (*top)->value;
+    Stack *tmp = *top;
+    *top = (*top)->next;
+    free(tmp);
 
-  return value;
+    return value;
 }
 
 void print_stack(Stack *top) {
