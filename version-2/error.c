@@ -14,7 +14,7 @@ void exit_error(int errcode, char *filename, const char *format, ...) {
     case INVALID_FILE:
       printf("Error: Could not open bytecode file '%s'\n", filename);
       break;
-    // Add cases for other error types
+    /* Add cases for other error types */
   }
 
   if (format) {
