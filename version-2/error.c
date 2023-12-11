@@ -1,16 +1,24 @@
-#include <stdio.h>
+void exit_error(int errcode, char *filename, const char *format, ...) {
+  va_list args;
+  va_start(args, format);
 
-void error_invalid_bytecode(int bytecode) {
-  printf("Error: Unknown instruction %d\n", bytecode);
+  switch (errcode) {
+    case INVALID_BYTECODE:
+      printf("Error: Unknown instruction %d\n", bytecode);
+      break;
+    case STACK_UNDERFLOW:
+      printf("Error: Stack underflow\n");
+      break;
+    case INVALID_FILE:
+      printf("Error: Could not open bytecode file '%s'\n", filename);
+      break;
+    // Add cases for other error types
+  }
+
+  if (format) {
+    vprintf(format, args);
+  }
+
+  va_end(args);
+  exit(errcode);
 }
-
-void error_stack_underflow() {
-  printf("Error: Stack underflow\n");
-}
-
-void error_invalid_file(char *filename) {
-  printf("Error: Could not open bytecode file '%s'\n", filename);
-}
-
-// Add more error handling functions as needed
-
