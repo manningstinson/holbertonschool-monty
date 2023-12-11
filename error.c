@@ -1,4 +1,10 @@
 #include "monty.h"
+#include <stdarg.h>
+#include <stdio.h>
+
+#define INVALID_BYTECODE 1
+#define STACK_UNDERFLOW 2
+#define INVALID_FILE 3
 
 void exit_error(int errcode, char *filename, const char *format, ...) {
   va_list args;
