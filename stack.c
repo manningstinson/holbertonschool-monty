@@ -1,7 +1,8 @@
 #include "monty.h"
+#include <stdio.h>
 
 stack_t *create_stack(void) {
-  return NULL;
+  return malloc(sizeof(stack_t));
 }
 
 void push(stack_t **stack, int data) {
@@ -33,15 +34,15 @@ void pall(stack_t **stack) {
 
 void pint(stack_t **stack) {
   if (!*stack) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't pint, stack empty\n", line_number);
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't pint, stack empty\n");
   }
 
   printf("%d\n", (*stack)->n);
 }
 
-void pop(stack_t **stack, unsigned int line_number) {
+void pop(stack_t **stack) {
   if (!*stack) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't pop, stack empty\n", line_number);
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't pop, stack empty\n");
   }
 
   stack_t *node = *stack;
@@ -54,9 +55,9 @@ void pop(stack_t **stack, unsigned int line_number) {
   free(node);
 }
 
-void swap(stack_t **stack, unsigned int line_number) {
+void swap(stack_t **stack) {
   if (!*stack || !(*stack)->next) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't swap, stack too short\n", line_number);
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't swap, stack too short\n");
   }
 
   stack_t *tmp = (*stack)->next;
@@ -71,4 +72,6 @@ void free_stack(stack_t **stack) {
   while (*stack) {
     stack_t *node = *stack;
     *stack = (*stack)->next;
-    free(
+    free(node);
+  }
+}
