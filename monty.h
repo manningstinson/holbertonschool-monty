@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #include <stddef.h>
+#include <stdlib.h>
 
 typedef struct stack_s {
   int n;
@@ -23,8 +24,10 @@ void pall(stack_t **stack);
 void pint(stack_t **stack);
 void pop(stack_t **stack);
 void swap(stack_t **stack);
-void add(stack_t **stack);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack);
 void free_stack(stack_t **stack);
+
+void exit_error(int status, char *file, char *format, ...);
 
 #endif
