@@ -32,17 +32,17 @@ void pall(stack_t **stack) {
   }
 }
 
-void pint(stack_t **stack) {
+void pint(stack_t **stack, unsigned int line_number) {
   if (!*stack) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't pint, stack empty\n");
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't pint, stack empty\n", line_number);
   }
 
   printf("%d\n", (*stack)->n);
 }
 
-void pop(stack_t **stack) {
+void pop(stack_t **stack, unsigned int line_number) {
   if (!*stack) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't pop, stack empty\n");
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't pop, stack empty\n", line_number);
   }
 
   stack_t *node = *stack;
@@ -55,9 +55,9 @@ void pop(stack_t **stack) {
   free(node);
 }
 
-void swap(stack_t **stack) {
+void swap(stack_t **stack, unsigned int line_number) {
   if (!*stack || !(*stack)->next) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: can't swap, stack too short\n");
+    exit_error(EXIT_FAILURE, NULL, "L%u: can't swap, stack too short\n", line_number);
   }
 
   stack_t *tmp = (*stack)->next;
