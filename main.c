@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
     int result = EXIT_SUCCESS;
     switch (instruction) {
       case PUSH:
-        push(top, bytecode);
+        push(&top, bytecode);
         break;
       case POP:
       case PINT:
@@ -44,41 +44,4 @@ int main(int argc, char **argv) {
         break;
       // Add similar cases for other instructions
       default:
-        exit_error(EXIT_FAILURE, NULL, "L%u: Unknown instruction\n", line_number);
-    }
-
-    if (result != EXIT_SUCCESS) {
-      exit(EXIT_FAILURE);
-    }
-  }
-
-  /* Free resources and exit */
-  free_stack(&top);
-  fclose(bytecode_file);
-
-  return EXIT_SUCCESS;
-}
-
-/*
- * Handles simple instructions like POP and PINT which require similar
- * error checking logic.
- */
-int execute_simple_instruction(Instruction instruction, stack_t **top, unsigned int line_number) {
-  int result = -1;
-
-  switch (instruction) {
-    case POP:
-      result = pop(top);
-      break;
-    case PINT:
-      result = pint(top, line_number);
-      break;
-    // Add similar cases for other simple instructions
-  }
-
-  if (result == -1) {
-    exit_error(EXIT_FAILURE, NULL, "L%u: Error executing instruction '%s'\n", line_number, instruction.opcode);
-  }
-
-  return EXIT_SUCCESS;
-}
+        exit
