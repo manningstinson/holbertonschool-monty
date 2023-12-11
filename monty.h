@@ -19,9 +19,9 @@ typedef struct instruction_s {
 } instruction_t;
 
 /* Opcodes */
-#define PUSH 1
-#define POP 2
-#define PINT 3
+#define PUSH_OPCODE 1
+#define POP_OPCODE 2
+#define PINT_OPCODE 3
 
 /* Function declarations */
 void push(stack_t **stack, int data);
@@ -48,13 +48,13 @@ instruction_t parse_instruction(int bytecode);
 int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number);
 
 /* Define instruction enum without tag */
-enum instruction_type {
-  PUSH,
-  POP,
-  PINT,
+typedef enum {
+  PUSH = PUSH_OPCODE,
+  POP = POP_OPCODE,
+  PINT = PINT_OPCODE,
   /* ... other instructions ... */
   UNKNOWN = -1
-};
+} instruction_type;
 
 
 #endif
