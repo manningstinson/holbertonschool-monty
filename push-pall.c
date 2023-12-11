@@ -28,31 +28,25 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	new_node->n = value;
-	stack_push(*stack, new_node);
+	stack_push(*stack, new_node); // Use stack_push if needed
 }
 
-void pall(stack_t **stack, unsigned int line_number, int order)
-{
-	if (!stack || !*stack) {
-		return;
-	}
+void pall(stack_t **stack) {
+  if (!stack || !*stack) {
+    return;
+  }
 
-	if (order == PALL_TOP_DOWN) {
-		stack_t *node = *stack;
-		while (node) {
-			printf("%d\n", node->n);
-			node = node->next;
-		}
-	} else if (order == PALL_BOTTOM_UP) {
-		stack_print(*stack);
-	}
+  stack_t *node = *stack;
+  while (node) {
+    printf("%d\n", node->n);
+    node = node->next;
+  }
 }
 
-void stack_print(stack_t *node)
-{
-	if (!node) {
-		return;
-	}
-	stack_print(node->next);
-	printf("%d\n", node->n);
+void stack_print(stack_t *node) { // Modified function signature
+  if (!node) {
+    return;
+  }
+  stack_print(node->next);
+  printf("%d\n", node->n);
 }
