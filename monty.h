@@ -12,7 +12,7 @@ typedef struct stack_s {
 
 typedef struct instruction_s {
   char *opcode;
-  void (*f)(stack_t **stack, unsigned int line_number);
+  void (*f)(stack_t **stack, int data); // Changed parameter type for push
 } instruction_t;
 
 #define PUSH 1
@@ -20,7 +20,7 @@ typedef struct instruction_s {
 #define PINT 3
 
 void push(stack_t **stack, int data);
-void pall(stack_t **stack); // Removed line_number and order parameters
+void pall(stack_t **stack);
 void pint(stack_t **stack);
 void pop(stack_t **stack);
 void swap(stack_t **stack);
@@ -30,6 +30,6 @@ void free_stack(stack_t **stack);
 
 void exit_error(int status, char *file, char *format, ...);
 
-// Add definition for stack_overflow here
+bool stack_overflow(stack_t *stack); // Add definition for stack_overflow
 
 #endif
