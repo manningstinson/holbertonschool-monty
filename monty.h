@@ -43,7 +43,9 @@ bool stack_overflow(stack_t *stack);
 void stack_push(stack_t **stack, stack_t *node);
 
 /* Additional function declarations */
-stack_t *create_stack(void); // Added declaration for create_stack
-Instruction parse_instruction(int bytecode); // Added declaration for parse_instruction
-int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number); // Added declaration with correct type
+stack_t *create_stack(void);
+instruction_t parse_instruction(int bytecode); // Add declaration with correct type
+int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number); // Add declaration with correct type
+enum instruction_s UNKNOWN = -1; // Define UNKNOWN enum value
+
 #endif
