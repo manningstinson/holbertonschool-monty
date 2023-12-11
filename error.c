@@ -6,8 +6,6 @@
 #define STACK_UNDERFLOW 2
 #define INVALID_FILE 3
 
-int bytecode; // Declare bytecode before using
-
 void exit_error(int errcode, char *filename, const char *format, ...) {
   va_list args;
   va_start(args, format);
