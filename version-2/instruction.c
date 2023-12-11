@@ -1,15 +1,35 @@
 #include "monty.h"
 
-Instruction parse_instruction(int bytecode) {
-  switch (bytecode) {
-    case 1: return PUSH;
-    case 2: return POP;
-    case 3: return PINT;
-    case 4: return PALL;
-    case 5: return NOP;
-    case 6: return ADD;
-    case 7: return SWAP;
-    default: return UNKNOWN;
-  }
-}
+instruction_t parse_instruction(char *opcode) {
+  instruction_t instruction;
 
+  // Map string opcodes to instruction structures
+  if (strcmp(opcode, "push") == 0) {
+    instruction.opcode = "push";
+    instruction.f = &push;
+  } else if (strcmp(opcode, "pop") == 0) {
+    instruction.opcode = "pop";
+    instruction.f = &pop;
+  } else if (strcmp(opcode, "pint") == 0) {
+    instruction.opcode = "pint";
+    instruction.f = &pint;
+  } else if (strcmp(opcode, "pall") == 0) {
+    instruction.opcode = "pall";
+    instruction.f = &pall;
+  } else if (strcmp(opcode, "nop") == 0) {
+    instruction.opcode = "nop";
+    instruction.f = &nop;
+  } else if (strcmp(opcode, "add") == 0) {
+    instruction.opcode = "add";
+    instruction.f = &add;
+  } else if (strcmp(opcode, "swap") == 0) {
+    instruction.opcode = "swap";
+    instruction.f = &swap;
+  } else {
+    // Handle unknown instruction
+    instruction.opcode = "unknown";
+    instruction.f = NULL;
+  }
+
+  return instruction;
+}
