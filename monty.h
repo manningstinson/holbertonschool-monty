@@ -42,4 +42,9 @@ bool stack_overflow(stack_t *stack);
 /* Function to push a node onto the stack (implementation required) */
 void stack_push(stack_t **stack, stack_t *node);
 
+/* Additional function declarations */
+void create_stack(void);
+Instruction parse_instruction(int bytecode);
+int execute_simple_instruction(Instruction instruction, stack_t **top, unsigned int line_number);
+
 #endif
