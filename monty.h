@@ -47,13 +47,13 @@ stack_t *create_stack(void);
 instruction_t parse_instruction(int bytecode);
 int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number);
 
-/* Define instruction enum with size */
-enum instruction_s {
+/* Define instruction enum without tag */
+enum {
   PUSH,
   POP,
   PINT,
   /* ... other instructions ... */
   UNKNOWN = -1
-} instruction_s;
+};
 
 #endif
