@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>  // Include the string.h library
+#include <string.h>
 
 extern size_t line_number;
 
@@ -19,7 +19,7 @@ void pint(stack_t **stack);
 void pop(stack_t **stack);
 void swap(stack_t **stack);
 void add(stack_t **stack);
-int read_and_execute_instructions(FILE *file);
+/*int read_and_execute_instructions(FILE *file);*/
 void free_stack(stack_t **stack);
 
 #endif /* MONTY_H */
