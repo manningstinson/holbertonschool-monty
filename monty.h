@@ -5,7 +5,6 @@
 #define STACK_UNDERFLOW 2
 #define INVALID_FILE 3
 
-
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
