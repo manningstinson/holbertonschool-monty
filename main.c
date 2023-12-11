@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monty.h"
-#include "stack.h"
-#include "instruction.h"
 
 int main(int argc, char **argv) {
   if (argc != 2) {
