@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
   }
 
   /* Create the stack */
-  stack_t *top = create_stack(); // Use the returned value from create_stack
+  stack_t *top = create_stack();
 
   /* Read and execute instructions */
   int bytecode;
@@ -26,15 +26,15 @@ int main(int argc, char **argv) {
     line_number++;
 
     /* Parse the instruction */
-    Instruction instruction = parse_instruction(bytecode); // Function call with correct argument
+    instruction_t instruction = parse_instruction(bytecode);
+
+    /* Check for unknown instruction */
     if (instruction == UNKNOWN) {
       exit_error(EXIT_FAILURE, NULL, "L%u: Unknown instruction '%d'\n",
                   line_number, bytecode);
     }
 
     /* Execute the instruction */
-    int result = execute_simple_instruction(instruction, top, line_number); // Function call with correct argument and type
+    int result = execute_simple_instruction(instruction, &top, line_number);
 
-    /* Handle errors returned by execute_simple_instruction */
-    if (result != EXIT_SUCCESS) {
-      exit
+    /* Handle
