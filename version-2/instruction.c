@@ -3,7 +3,7 @@
 instruction_t parse_instruction(char *opcode) {
   instruction_t instruction;
 
-  // Map string opcodes to instruction structures
+  /* Map string opcodes to instruction structures */
   if (strcmp(opcode, "push") == 0) {
     instruction.opcode = "push";
     instruction.f = &push;
