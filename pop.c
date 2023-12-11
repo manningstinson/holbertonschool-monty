@@ -1,12 +1,21 @@
 #include "monty.h"
 
-void pop(stack_t **stack) {
-    if (*stack) {
-        stack_t *temp = *stack;
-        *stack = (*stack)->next;
-        free(temp);
-    } else {
-        fprintf(stderr, "L%zu: can't pop an empty stack\n", line_number);
-        exit(EXIT_FAILURE);
+void pop(stack_t **stack, unsigned int line_number)
+{
+    if (!stack) {
+        exit_error(EXIT_FAILURE, NULL, "L%u: can't pop NULL stack\n",
+            line_number);
     }
+
+    if (!*stack) {
+        exit_error(EXIT_FAILURE, NULL,
+            "L%u: can't pop an empty stack\n", line_number);
+    }
+
+    stack_t *temp = *stack;
+    *stack = (*stack)->next;
+    if (*stack) {
+        (*stack)->prev = NULL;
+    }
+    free(temp);
 }
