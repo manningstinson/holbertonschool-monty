@@ -1,6 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define INVALID_BYTECODE 1
+#define STACK_UNDERFLOW 2
+#define INVALID_FILE 3
+
+
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
