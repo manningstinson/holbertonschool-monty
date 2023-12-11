@@ -29,10 +29,11 @@ int main(int argc, char **argv) {
     instruction_t instruction = parse_instruction(bytecode);
 
     /* Check for unknown instruction */
-    if (instruction == UNKNOWN) {
-      exit_error(EXIT_FAILURE, NULL, "L%u: Unknown instruction '%d'\n",
-                  line_number, bytecode);
-    }
+if (strcmp(instruction.opcode, "UNKNOWN") == 0) {
+  exit_error(EXIT_FAILURE, NULL, "L%u: Unknown instruction '%s'\n",
+              line_number, instruction.opcode);
+}
+
 
     /* Execute the instruction */
     int result = execute_simple_instruction(instruction, &
