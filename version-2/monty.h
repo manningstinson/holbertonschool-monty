@@ -5,37 +5,28 @@
 #include <stdlib.h>
 
 /* Define the stack structure */
-typedef struct Stack {
-  int value;   /* Data value stored in the stack */
-  struct Stack *next;  /* Pointer to the next element in the stack */
-} Stack;
+typedef struct stack_s {
+  int n;
+  struct stack_s *prev;
+  struct stack_s *next;
+} stack_t;
 
-/* Define an enum for different instructions */
-typedef enum Instruction {
-  PUSH,      /* Push value onto the stack */
-  POP,       /* Pop value from the stack */
-  PINT,      /* Print the top value of the stack */
-  PALL,      /* Print all values in the stack */
-  NOP,       /* No operation */
-  ADD,       /* Add two top values of the stack */
-  SWAP,      /* Swap the top two elements of the stack */
-  MUL,       /* Multiply the top two elements of the stack */
-  SUB,       /* Subtract the top two elements of the stack */
-  DIV,       /* Divide the second element by the top element of the stack */
-  MOD,       /* Modulo the second element by the top element of the stack */
-  UNKNOWN    /* Unknown instruction */
-} Instruction;
+/* Define the instruction structure */
+typedef struct instruction_s {
+  char *opcode;
+  void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
 
 /* Function prototypes */
-Stack *create_stack();
-void push(Stack **top, int value);
-int pop(Stack **top);
-void print_stack(Stack *top);
-void free_stack(Stack **top);
-void swap(Stack **top, unsigned int line_number);
-int pint(Stack **top, unsigned int line_number);
-void pall(Stack *top);
+stack_t *create_stack();
+void push(stack_t **top, int value);
+int pop(stack_t **top);
+void print_stack(stack_t *top);
+void free_stack(stack_t **top);
+void swap(stack_t **top, unsigned int line_number);
+int pint(stack_t **top, unsigned int line_number);
+void pall(stack_t *top);
 void nop(void);
-int add(Stack **top, unsigned int line_number);
+int add(stack_t **top, unsigned int line_number);
 
 #endif
