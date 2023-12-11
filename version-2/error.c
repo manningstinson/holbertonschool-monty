@@ -1,3 +1,5 @@
+#include "monty.h"
+
 void exit_error(int errcode, char *filename, const char *format, ...) {
   va_list args;
   va_start(args, format);
