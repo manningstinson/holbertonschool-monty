@@ -38,8 +38,8 @@ void nop(stack_t **stack);
 void free_stack(stack_t **stack);
 
 /* Error handling function */
-void exit_error(int errcode, char *filename, const char *format, ...) {
-}
+void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
+
 
 
 /* Function to check for stack overflow (implementation required) */
