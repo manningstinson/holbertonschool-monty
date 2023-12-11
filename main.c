@@ -36,4 +36,5 @@ if (strcmp(instruction.opcode, "UNKNOWN") == 0) {
 
 
     /* Execute the instruction */
-    int result = execute_simple_instruction(instruction, &
+    int result = execute_simple_instruction(instruction, &top, line_number);
+
