@@ -27,7 +27,7 @@ void push(Stack **top, int value);
 int pop(Stack **top);
 void print_stack(Stack *top);
 void free_stack(Stack **top);
-Instruction parse_instruction(int bytecode);
+Instruction parse_instruction(char *instruction);
 
 
 #endif
