@@ -5,34 +5,6 @@ Stack *create_stack() {
   return NULL;
 }
 
-void push(Stack **top, int value) {
-  Stack *new_node = malloc(sizeof(Stack));
-
-  if (!new_node) {
-    fprintf(stderr, "Error: Memory allocation failed\n");
-    exit(1);
-  }
-
-  new_node->value = value;
-  new_node->next = *top;
-  *top = new_node;
-}
-
-int pop(Stack **top)
-{
-    if (*top == NULL) {
-        exit_error(EXIT_FAILURE, NULL, "Stack underflow\n");
-        return EXIT_FAILURE; // Replace with appropriate error code
-    }
-
-    int value = (*top)->value;
-    Stack *tmp = *top;
-    *top = (*top)->next;
-    free(tmp);
-
-    return value;
-}
-
 void print_stack(Stack *top) {
   printf("[");
   while (top) {
