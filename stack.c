@@ -23,14 +23,15 @@ void push(stack_t **stack, int data) {
   *stack = new_node;
 }
 
-void pall(stack_t **stack) {
-  stack_t *node = *stack;
+void pall(stack_t **stack, unsigned int line_number) {
+    stack_t *node = *stack;
 
-  while (node) {
-    printf("%d\n", node->n);
-    node = node->next;
-  }
+    while (node) {
+        printf("%d\n", node->n);
+        node = node->next;
+    }
 }
+
 
 void pint(stack_t **stack, unsigned int line_number) {
   if (!*stack) {
