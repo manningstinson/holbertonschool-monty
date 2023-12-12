@@ -11,15 +11,15 @@
 
 /* Stack node structure */
 typedef struct stack_s {
-  int n;
-  struct stack_s *prev;
-  struct stack_s *next;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
 } stack_t;
 
 /* Instruction structure */
 typedef struct instruction_s {
-  char *opcode;
-  void (*f)(stack_t **stack, int data);
+    char *opcode;
+    void (*f)(stack_t **stack, int line_number);  // Updated signature
 } instruction_t;
 
 /* Opcodes */
@@ -27,14 +27,14 @@ typedef struct instruction_s {
 #define POP_OPCODE 2
 #define PINT_OPCODE 3
 
-/* Function declarations */
+/* Function declarations with updated signatures */
 void push(stack_t **stack, int data);
-void pall(stack_t **stack);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack);
+void pall(stack_t **stack, int line_number);
+void pint(stack_t **stack, int line_number);
+void pop(stack_t **stack, int line_number);
+void swap(stack_t **stack, int line_number);
+void add(stack_t **stack, int line_number);
+void nop(stack_t **stack, int line_number);
 void free_stack(stack_t **stack);
 
 /* Error handling function */
@@ -53,11 +53,11 @@ int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigne
 
 /* Define instruction enum without tag */
 typedef enum {
-  PUSH = PUSH_OPCODE,
-  POP = POP_OPCODE,
-  PINT = PINT_OPCODE,
-  /* ... other instructions ... */
-  UNKNOWN = -1
+    PUSH = PUSH_OPCODE,
+    POP = POP_OPCODE,
+    PINT = PINT_OPCODE,
+    /* ... other instructions ... */
+    UNKNOWN = -1
 } instruction_type;
 
 #endif
