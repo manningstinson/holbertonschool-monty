@@ -1,7 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-
 
 void push(stack_t **stack, int value) {
     char *str;
