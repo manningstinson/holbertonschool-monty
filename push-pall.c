@@ -27,7 +27,7 @@ void push(stack_t **stack, int value) {
 	}
 
 	new_node->n = value;
-	stack_push(*stack, new_node);
+stack_push(stack, &new_node);
 }
 
 void pall(stack_t **stack) {
