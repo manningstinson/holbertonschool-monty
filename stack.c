@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "monty.h"
 
-void pall(stack_t **stack)
+void pall(stack_t **stack, int line_number)
 {
     stack_t *node = *stack;
 
