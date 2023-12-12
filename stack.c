@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "monty.h"
 
-void pall(stack_t **stack, int line_number)
+void pall(stack_t **stack, int line_number __attribute__((unused)))
 {
     stack_t *node = *stack;
 
@@ -16,7 +16,8 @@ void pint(stack_t **stack, int line_number)
 {
     if (!*stack)
     {
-        exit_error(EXIT_FAILURE, NULL, "L%u: can't pint, stack empty\n", line_number);
+        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+        exit_error(EXIT_FAILURE, NULL, NULL);
     }
 
     printf("%d\n", (*stack)->n);
