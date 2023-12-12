@@ -29,8 +29,8 @@ typedef struct instruction_s {
 
 /* Function declarations */
 void push(stack_t **stack, int data);
-void pall(stack_t **stack);
-void pint(stack_t **stack, unsigned int line_number); // Added a semicolon here
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
