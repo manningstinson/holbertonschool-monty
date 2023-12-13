@@ -1,5 +1,3 @@
-// instruction.c
-
 #include "monty.h"
 
 instruction_t instructions[] = {
