@@ -41,7 +41,7 @@ void free_stack(stack_t **stack);
 void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
 
 /* Function to check for stack overflow (implementation required) */
-bool stack_overflow(stack_t *stack);
+bool stack_overflow(stack_t *stack __attribute__((unused)));
 
 /* Function to push a node onto the stack (implementation required) */
 void stack_push(stack_t **stack, stack_t *node);
