@@ -3,6 +3,8 @@
 instruction_t parse_instruction(int bytecode) {
     instruction_t instruction;
 
+    printf("Parsing Bytecode: %d\n", bytecode); // Debugging statement
+
     switch (bytecode) {
         case PUSH_OPCODE:
             instruction.opcode = "push";
@@ -27,6 +29,8 @@ instruction_t parse_instruction(int bytecode) {
 }
 
 int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number) {
+    printf("Executing Instruction: %s\n", instruction.opcode); // Debugging statement
+
     instruction.f(top, line_number);
     return 0;  
 }
