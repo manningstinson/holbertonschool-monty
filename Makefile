@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -pedantic -Wextra
-SRC = main.c stack.c create_stack.c parse_instruction.c execute_simple_instruction.c free_stack.c stack_overflow.c stack_push.c
+SRC = main.c stack.c add.c error.c instruction.c nop.c pall.c pint.c pop.c push.c
 OBJ = $(SRC:.c=.o)
 EXEC = monty
 
