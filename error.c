@@ -7,6 +7,8 @@ void exit_error(int errcode, const char *format, ...) {
     va_list args;
     va_start(args, format);
 
+    printf("Error Code: %d\n", errcode); // Debugging statement
+
     switch (errcode) {
         case INVALID_BYTECODE:
             fprintf(stderr, "Error: Unknown instruction\n");
