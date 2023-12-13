@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void push(stack_t **stack, int value) {
+void push(stack_t **stack, unsigned int line_number) {
    char *str = NULL; /* Initialize str */
 
     if (!stack) {
