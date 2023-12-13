@@ -3,12 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
-
-void exit_error(int errcode, char *filename, const char *format, ...) {
-    (void)errcode; // Unused, preventing a warning
-    (void)filename; // Unused, preventing a warning
-
+void exit_error(int errcode, const char *format, ...) {
     va_list args;
     va_start(args, format);
 
@@ -23,6 +18,9 @@ void exit_error(int errcode, char *filename, const char *format, ...) {
             printf("Error: Could not open bytecode file\n");
             break;
         /* Add cases for other error types */
+        default:
+            printf("Error: Unknown error code\n");
+            break;
     }
 
     if (format) {
