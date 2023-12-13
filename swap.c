@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void swap(stack_t **stack, int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
     if (!*stack || !(*stack)->next)
     {
