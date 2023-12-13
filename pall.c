@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 void pall(stack_t **stack, int line_number __attribute__((unused)))
 {
