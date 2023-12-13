@@ -1,5 +1,3 @@
-// error.c
-
 #include "monty.h"
 #include <stdarg.h>
 #include <stdio.h>
