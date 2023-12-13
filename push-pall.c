@@ -4,7 +4,7 @@
 #include <string.h>
 
 void push(stack_t **stack, int value) {
-    char *str;
+   char *str = NULL; /* Initialize str */
 
     if (!stack) {
         exit_error(EXIT_FAILURE, NULL, "can't push to NULL stack\n");
