@@ -7,13 +7,13 @@ EXEC = monty
 all: $(EXEC)
 
 $(EXEC): $(OBJ)
-    $(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
 
 %.o: %.c
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-    rm -f $(OBJ)
+	rm -f $(OBJ)
 
 clean_all:
-    rm -f $(OBJ) $(EXEC)
+	rm -f $(OBJ) $(EXEC)
