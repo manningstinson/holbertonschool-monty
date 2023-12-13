@@ -19,7 +19,7 @@ typedef struct stack_s {
 /* Instruction structure */
 typedef struct instruction_s {
     char *opcode;
-    void (*f)(stack_t **stack, int line_number);  // Updated signature
+    void (*f)(stack_t **stack, int line_number);  
 } instruction_t;
 
 /* Opcodes */
