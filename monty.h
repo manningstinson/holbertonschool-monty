@@ -38,7 +38,7 @@ void nop(stack_t **stack, int line_number);
 void free_stack(stack_t **stack);
 
 /* Error handling function */
-void exit_error(int errcode, char *filename, const char *format, ...) __attribute__((format(printf, 3, 4)));
+void exit_error(int errcode, const char *format, ...)
 
 /* Function to check for stack overflow (implementation required) */
 bool stack_overflow(stack_t *stack __attribute__((unused)));
