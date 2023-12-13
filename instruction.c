@@ -26,8 +26,6 @@ instruction_t parse_instruction(int bytecode) {
     return instruction;
 }
 
-#include "monty.h"
-
 int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number) {
     instruction.f(top, line_number);
     return 0;  
