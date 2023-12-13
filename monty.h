@@ -19,19 +19,23 @@ typedef struct stack_s {
 /* Instruction structure */
 typedef struct instruction_s {
     char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number); 
+    void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* Opcodes */
 #define PUSH_OPCODE 1
 #define POP_OPCODE 2
 #define PINT_OPCODE 3
+#define PALL_OPCODE 4
+#define ADD_OPCODE 5
+#define NOP_OPCODE 6
+// Add more opcodes as needed
 
 /* Function declarations with updated signatures */
-void push(stack_t **stack, unsigned int line_number);  
-void pall(stack_t **stack, unsigned int line_number);  
-void pint(stack_t **stack, unsigned int line_number);  
-void pop(stack_t **stack, unsigned int line_number);  
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
@@ -56,7 +60,10 @@ typedef enum {
     PUSH = PUSH_OPCODE,
     POP = POP_OPCODE,
     PINT = PINT_OPCODE,
-    /* ... other instructions ... */
+    PALL = PALL_OPCODE,
+    ADD = ADD_OPCODE,
+    NOP = NOP_OPCODE,
+    // Add more instructions as needed
     UNKNOWN = -1
 } instruction_type;
 
