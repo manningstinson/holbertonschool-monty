@@ -1,13 +1,11 @@
 #include "monty.h"
 #include <stdio.h>
 
-void pall(stack_t **stack, int line_number __attribute__((unused)))
-{
-    stack_t *node = *stack;
+// pall.c
 
-    while (node)
-    {
-        printf("%d\n", node->n);
-        node = node->next;
-    }
+#include "monty.h"
+
+void pall(stack_t **stack, unsigned int line_number __attribute__((unused))) {
+  
+    (void)stack; // Unused parameter, added to suppress the warning
 }
