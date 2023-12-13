@@ -18,6 +18,18 @@ instruction_t parse_instruction(int bytecode) {
             instruction.opcode = "pint";
             instruction.f = pint;
             break;
+        case PALL_OPCODE:
+            instruction.opcode = "pall";
+            instruction.f = pall;
+            break;
+        case ADD_OPCODE:
+            instruction.opcode = "add";
+            instruction.f = add;
+            break;
+        case NOP_OPCODE:
+            instruction.opcode = "nop";
+            instruction.f = nop;
+            break;
         // Add other cases for different opcodes
         default:
             instruction.opcode = "unknown";
@@ -25,12 +37,7 @@ instruction_t parse_instruction(int bytecode) {
             break;
     }
 
+    printf("Parsed Opcode: %s\n", instruction.opcode); // Debugging statement
+
     return instruction;
-}
-
-int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number) {
-    printf("Executing Instruction: %s\n", instruction.opcode); // Debugging statement
-
-    instruction.f(top, line_number);
-    return 0;  
 }
