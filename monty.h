@@ -1,13 +1,15 @@
+// monty.h
+
 #ifndef MONTY_H
 #define MONTY_H
-
-#define INVALID_BYTECODE 1
-#define STACK_UNDERFLOW 2
-#define INVALID_FILE 3
 
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+
+#define INVALID_BYTECODE 1
+#define STACK_UNDERFLOW 2
+#define INVALID_FILE 3
 
 /* Stack node structure */
 typedef struct stack_s {
@@ -19,7 +21,7 @@ typedef struct stack_s {
 /* Instruction structure */
 typedef struct instruction_s {
     char *opcode;
-    void (*f)(stack_t **stack, int line_number);  
+    void (*f)(stack_t **stack, unsigned int line_number);  // Corrected signature
 } instruction_t;
 
 /* Opcodes */
@@ -28,17 +30,17 @@ typedef struct instruction_s {
 #define PINT_OPCODE 3
 
 /* Function declarations with updated signatures */
-void push(stack_t **stack, int data);
-void pall(stack_t **stack, int line_number);
-void pint(stack_t **stack, int line_number);
-void pop(stack_t **stack, int line_number);
-void swap(stack_t **stack, int line_number);
-void add(stack_t **stack, int line_number);
-void nop(stack_t **stack, int line_number);
+void push(stack_t **stack, unsigned int line_number);  // Corrected signature
+void pall(stack_t **stack, unsigned int line_number);  // Corrected signature
+void pint(stack_t **stack, unsigned int line_number);  // Corrected signature
+void pop(stack_t **stack, unsigned int line_number);  // Corrected signature
+void swap(stack_t **stack, unsigned int line_number);  // Add missing function declaration
+void add(stack_t **stack, unsigned int line_number);  // Add missing function declaration
+void nop(stack_t **stack, unsigned int line_number);  // Add missing function declaration
 void free_stack(stack_t **stack);
 
 /* Error handling function */
-void exit_error(int errcode, const char *format, ...)
+void exit_error(int errcode, const char *format, ...);
 
 /* Function to check for stack overflow (implementation required) */
 bool stack_overflow(stack_t *stack __attribute__((unused)));
