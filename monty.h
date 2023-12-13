@@ -21,7 +21,7 @@ typedef struct stack_s {
 /* Instruction structure */
 typedef struct instruction_s {
     char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number);  // Corrected signature
+    void (*f)(stack_t **stack, unsigned int line_number); 
 } instruction_t;
 
 /* Opcodes */
@@ -30,13 +30,13 @@ typedef struct instruction_s {
 #define PINT_OPCODE 3
 
 /* Function declarations with updated signatures */
-void push(stack_t **stack, unsigned int line_number);  // Corrected signature
-void pall(stack_t **stack, unsigned int line_number);  // Corrected signature
-void pint(stack_t **stack, unsigned int line_number);  // Corrected signature
-void pop(stack_t **stack, unsigned int line_number);  // Corrected signature
-void swap(stack_t **stack, unsigned int line_number);  // Add missing function declaration
-void add(stack_t **stack, unsigned int line_number);  // Add missing function declaration
-void nop(stack_t **stack, unsigned int line_number);  // Add missing function declaration
+void push(stack_t **stack, unsigned int line_number);  
+void pall(stack_t **stack, unsigned int line_number);  
+void pint(stack_t **stack, unsigned int line_number);  
+void pop(stack_t **stack, unsigned int line_number);  
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 
 /* Error handling function */
