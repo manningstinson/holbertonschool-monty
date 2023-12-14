@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 void add(stack_t **stack, unsigned int line_number) {
     if (!*stack || !(*stack)->next) {
