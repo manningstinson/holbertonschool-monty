@@ -22,7 +22,7 @@ void push(stack_t **stack, unsigned int line_number) {
         exit_error(EXIT_FAILURE, NULL, "L%u: usage: push integer\n", line_number);
     }
 
-    fprintf(stderr, "L%u: usage: push integer\n", line_number);
+    printf("Pushing element at line %u: %d\n", line_number, value);
 
     stack_t *new_node = malloc(sizeof(stack_t));
     if (!new_node) {
