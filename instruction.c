@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+
 
 instruction_t parse_instruction(int bytecode) 
 {
