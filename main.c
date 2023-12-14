@@ -48,3 +48,4 @@ int main(int argc, char **argv) {
     free_stack(&top);  // Don't forget to free allocated memory
 
     return EXIT_SUCCESS;
+}
