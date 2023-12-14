@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 stack_t *create_stack(void) {
     stack_t *new_node = malloc(sizeof(stack_t));
