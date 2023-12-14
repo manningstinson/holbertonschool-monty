@@ -53,7 +53,7 @@ void stack_push(stack_t **stack, stack_t *node);
 /* Additional function declarations */
 stack_t *create_stack(void);
 instruction_t parse_instruction(int bytecode);
-int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number);
+/* int execute_simple_instruction(instruction_t instruction, stack_t **top, unsigned int line_number);*/
 
 /* Define instruction enum without tag */
 typedef enum {
