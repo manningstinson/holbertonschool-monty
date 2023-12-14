@@ -8,10 +8,14 @@ void swap(stack_t **stack, unsigned int line_number)
         return;  // No need for return statements in a void function
     }
 
+    printf("Swapping elements at line %u\n", line_number);
+
     /* Avoid unnecessary temporary variable */
     (*stack)->next->prev = *stack;
     (*stack)->prev = (*stack)->next;
     (*stack)->next = (*stack)->next->next;
     (*stack)->prev->next = *stack;
     *stack = (*stack)->prev;
+
+    printf("Elements swapped successfully\n");
 }
