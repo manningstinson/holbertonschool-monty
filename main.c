@@ -26,8 +26,6 @@ int main(int argc, char **argv) {
     while (fscanf(bytecode_file, "%d", &bytecode) != EOF) {
         line_number++;
 
-        printf("Line %u: Read bytecode %d\n", line_number, bytecode);  // Print the read bytecode
-
         /* Parse the instruction */
         instruction_t instruction = parse_instruction(bytecode);
 
@@ -37,17 +35,12 @@ int main(int argc, char **argv) {
                        line_number, instruction.opcode);
         }
 
-        printf("Executing instruction: %s\n", instruction.opcode);  // Print the opcode being executed
-
         /* Execute the instruction */
         int result = execute_simple_instruction(instruction, &top, line_number);
         if (result != 0) {
             fprintf(stderr, "Error executing instruction at line %u\n", line_number);
             exit(EXIT_FAILURE);
         }
-
-        printf("Stack after instruction: ");
-        print_stack(top);  // Assuming you have a function to print the stack
     }
 
     /* Clean up and close the file */
@@ -55,4 +48,3 @@ int main(int argc, char **argv) {
     free_stack(&top);  // Don't forget to free allocated memory
 
     return EXIT_SUCCESS;
-}
