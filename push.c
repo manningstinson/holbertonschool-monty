@@ -8,8 +8,8 @@ void push(stack_t **stack, unsigned int line_number) {
 
     char *str = NULL; /* Initialize str */
 
-    if (!stack) {
-        exit_error(EXIT_FAILURE, NULL, "L%u: can't push to NULL stack\n", line_number);
+    if (!stack || !*stack) {
+        exit_error(EXIT_FAILURE, NULL, "L%u: can't push to NULL or empty stack\n", line_number);
     }
 
     str = strtok(NULL, " \t\n");
@@ -22,17 +22,20 @@ void push(stack_t **stack, unsigned int line_number) {
         exit_error(EXIT_FAILURE, NULL, "L%u: usage: push integer\n", line_number);
     }
 
-    if (stack_overflow(*stack)) {
-        exit_error(EXIT_FAILURE, NULL, "L%u: stack overflow\n", line_number);
-    }
-
     printf("Pushing element at line %u: %d\n", line_number, value);
 
     stack_t *new_node = malloc(sizeof(stack_t));
     if (!new_node) {
-        exit_error(EXIT_FAILURE, NULL, "L%u: Error allocating memory\n", line_number);
+        exit_error(EXIT_FAILURE, NULL, "L%u: Error allocating memory for stack node\n", line_number);
     }
 
     new_node->n = value;
-    stack_push(stack, new_node);
+    new_node->prev = NULL;
+    new_node->next = *stack;
+
+    if (*stack) {
+        (*stack)->prev = new_node;
+    }
+
+    *stack = new_node;
 }
