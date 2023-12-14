@@ -1,6 +1,7 @@
 #include "monty.h"
 
-instruction_t parse_instruction(int bytecode) {
+instruction_t parse_instruction(int bytecode) 
+{
     instruction_t instruction;
 
     printf("Parsing Bytecode: %d\n", bytecode); // Debugging statement
