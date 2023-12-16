@@ -40,7 +40,7 @@ void op_push(stack_t **stack, unsigned int line_number) {
     char *arg = strtok(NULL, " \t\n");
 
     if (!arg || !is_numeric(arg)) {
-        fprintf(stderr, "L%d: usage: push integer\n", line_number);
+        fprintf(stderr, "L%d: Can't open file %s\n", line_number, arg);
         cleanup(*stack);
         exit(EXIT_FAILURE);
     }
