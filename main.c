@@ -1,23 +1,45 @@
-#include "monty.h"
-#include <stdlib.h>  /* For EXIT_FAILURE and EXIT_SUCCESS */
-#include <stdio.h>   /* For fprintf */
+#ifndef MONTY_H
+#define MONTY_H
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "USAGE: monty file\n");
-        return EXIT_FAILURE;
-    }
+#include <stddef.h>
 
-    char *filename = argv[1];
-    stack_t *stack = NULL;
+/**
+ * struct stack_s - doubly linked list representation of a stack (or queue)
+ * @n: integer
+ * @prev: points to the previous element of the stack (or queue)
+ * @next: points to the next element of the stack (or queue)
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct stack_s
+{
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
+} stack_t;
 
-    if (read_file(filename, &stack) == EXIT_FAILURE) {
-        fprintf(stderr, "Error: Can't open file %s\n", filename);
-        return EXIT_FAILURE;
-    }
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct instruction_s
+{
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
 
-    atexit(cleanup);
+/* Function Prototypes */
+int read_file(char *filename, stack_t **stack);
+void opcode_dispatcher(char *line, stack_t **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
+void *safe_malloc(size_t size);
+void free_stack(stack_t *stack);
+void cleanup(void);
 
-    return EXIT_SUCCESS;
-}
-
+#endif /* MONTY_H */
