@@ -1,6 +1,9 @@
 #include "monty.h"
 #include <stdlib.h>  /* For atoi, malloc, exit */
 #include <ctype.h>   /* For isdigit */
+#include <stdio.h>
+#include <string.h>  /* For strtok */
+
 
 void op_push(stack_t **stack, unsigned int line_number) {
     char *arg = strtok(NULL, " \t\n");
