@@ -26,6 +26,10 @@ int read_file(char *filename, stack_t **stack)
     while (getline(&line, &len, file) != -1)
     {
         line_number++;
+        /* Remove newline character at the end of the line */
+        if (line[len - 1] == '\n')
+            line[len - 1] = '\0';
+
         /* Process the line and execute Monty byte codes */
         opcode_dispatcher(line, stack, line_number);
     }
