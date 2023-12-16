@@ -1,43 +1,47 @@
-#include "monty.h"
+#include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
+#include "monty.h"
 #include <stdio.h>
 
+void push_stack(stack_t **stack, int value) {
+    stack_t *new_node = malloc(sizeof(stack_t));
 
-/**
- * is_numeric - Check if a string is numeric.
- * @str: The string to check.
- * Return: 1 if numeric, 0 otherwise.
- */
-int is_numeric(char *str)
-{
-    if (!str)
-        return (0);
+    if (!new_node) {
+        fprintf(stderr, "Error: malloc failed\n");
+        cleanup(*stack);
+        exit(EXIT_FAILURE);
+    }
 
-    if (*str == '-' && str[1] == '\0')
-        return (0);
+    new_node->n = value;
+    new_node->prev = NULL;
+    new_node->next = *stack;
 
-    while (*str)
-    {
+    if (*stack)
+        (*stack)->prev = new_node;
+
+    *stack = new_node;
+}
+
+int is_numeric(const char *str) {
+    if (!str || (*str == '-' && str == str))
+        return 0;
+
+    while (*str) {
         if (!isdigit(*str))
-            return (0);
+            return 0;
         str++;
     }
 
-    return (1);
+    return 1;
 }
 
-/**
- * op_push - Push an element onto the stack.
- * @stack: Double pointer to the beginning of the stack.
- * @line_number: The line number in the Monty file.
- */
-void op_push(stack_t **stack, unsigned int line_number)
-{
+void op_push(stack_t **stack, unsigned int line_number) {
     char *arg = strtok(NULL, " \t\n");
 
-    if (!arg || !is_numeric(arg))
-    {
+    if (!arg || !is_numeric(arg)) {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
+        cleanup(*stack);
         exit(EXIT_FAILURE);
     }
 
