@@ -27,8 +27,9 @@ int read_file(char *filename, stack_t **stack)
     {
         line_number++;
         /* Remove newline character at the end of the line */
-        if (line[len - 1] == '\n')
-            line[len - 1] = '\0';
+        size_t line_len = strlen(line);
+        if (line_len > 0 && line[line_len - 1] == '\n')
+            line[line_len - 1] = '\0';
 
         /* Process the line and execute Monty byte codes */
         opcode_dispatcher(line, stack, line_number);
