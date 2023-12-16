@@ -33,22 +33,19 @@ void push_stack(stack_t **stack, int value)
 /**
  * is_numeric - Checks if a given string represents a numeric value.
  * @str: String to be checked
+ * @value: Pointer to store the integer value
  *
  * Return: 1 if numeric, 0 otherwise
  */
-int is_numeric(const char *str)
+int is_numeric(const char *str, int *value)
 {
     if (!str || (*str == '-' && *(str + 1) == '\0'))
         return 0;
 
-    while (*str)
-    {
-        if (!isdigit(*str))
-            return 0;
-        str++;
-    }
+    char *endptr;
+    *value = strtol(str, &endptr, 10);
 
-    return 1;
+    return *endptr == '\0';
 }
 
 /**
@@ -60,12 +57,20 @@ void op_push(stack_t **stack, unsigned int line_number)
 {
     char *arg = strtok(NULL, " \t\n");
 
-    if (!arg || !is_numeric(arg))
+    if (!arg)
     {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
         cleanup(*stack);
         exit(EXIT_FAILURE);
     }
 
-    push_stack(stack, atoi(arg));
+    int value;
+    if (!is_numeric(arg, &value))
+    {
+        fprintf(stderr, "L%d: usage: push integer\n", line_number);
+        cleanup(*stack);
+        exit(EXIT_FAILURE);
+    }
+
+    push_stack(stack, value);
 }
