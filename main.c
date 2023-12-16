@@ -4,7 +4,7 @@
 
 /* Wrapper function for atexit with the correct signature */
 void cleanup_wrapper(void) {
-    cleanup(NULL);  // Passing NULL or any appropriate argument
+    cleanup();  
 }
 
 int main(int argc, char *argv[]) {
