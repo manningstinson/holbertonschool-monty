@@ -1,7 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>  // Include for string functions
+#include <string.h>
 
 /**
  * read_file - Reads the content of a file and executes Monty byte codes
