@@ -24,7 +24,7 @@ void push_stack(stack_t **stack, int value) {
 }
 
 int is_numeric(const char *str) {
-    if (!str || (*str == '-' && *(str + 1) != '\0'))
+    if (!str || (*str == '-' && *(str + 1) == '\0'))
         return 0;
 
     while (*str) {
