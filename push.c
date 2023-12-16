@@ -7,14 +7,14 @@
  * @str: String to check
  * Return: 1 if numeric, 0 otherwise
  */
-int is_numeric(char *str) {
+int is_numeric(const char *str) {
     if (!str || *str == '\0')
         return 0;
 
     for (; *str; ++str) {
         if (*str == '-' && str == str)
             continue;
-        if (!isdigit(*str))
+        if (!isdigit((unsigned char)*str))
             return 0;
     }
 
