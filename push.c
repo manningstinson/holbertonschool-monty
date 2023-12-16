@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 /**
  * is_numeric - Check if a string is numeric.
