@@ -1,46 +1,22 @@
 #include "monty.h"
-#include <stdio.h>
+#include <stdio.h>   /* For fprintf */
+#include <stdlib.h>  /* For exit */
+#include <string.h>  /* For strcmp, strtok */
 
+void opcode_dispatcher(char *line, stack_t **stack, unsigned int line_number) {
+    char *opcode = strtok(line, " \t\n");
 
-instruction_t parse_instruction(int bytecode) 
-{
-    instruction_t instruction;
-
-    printf("Parsing Bytecode: %d\n", bytecode); // Debugging statement
-
-    switch (bytecode) {
-        case PUSH_OPCODE:
-            instruction.opcode = "push";
-            instruction.f = push;
-            break;
-        case POP_OPCODE:
-            instruction.opcode = "pop";
-            instruction.f = pop;
-            break;
-        case PINT_OPCODE:
-            instruction.opcode = "pint";
-            instruction.f = pint;
-            break;
-        case PALL_OPCODE:
-            instruction.opcode = "pall";
-            instruction.f = pall;
-            break;
-        case ADD_OPCODE:
-            instruction.opcode = "add";
-            instruction.f = add;
-            break;
-        case NOP_OPCODE:
-            instruction.opcode = "nop";
-            instruction.f = nop;
-            break;
-        // Add other cases for different opcodes
-        default:
-            instruction.opcode = "unknown";
-            instruction.f = nop;  // Default to no operation
-            break;
+    if (!opcode) {
+        return; // Ignore empty lines
     }
 
-    printf("Parsed Opcode: %s\n", instruction.opcode); // Debugging statement
-
-    return instruction;
+    if (strcmp(opcode, "push") == 0) {
+        op_push(stack, line_number);
+    } else if (strcmp(opcode, "pall") == 0) {
+        op_pall(stack, line_number);
+    } else {
+        fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+        exit(EXIT_FAILURE);
+    }
 }
+
