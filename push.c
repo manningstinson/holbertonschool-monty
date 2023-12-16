@@ -1,35 +1,39 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
- * is_numeric - Checks if a string is numeric
- * @str: String to check
- * Return: 1 if numeric, 0 otherwise
+ * is_numeric - Check if a string is numeric.
+ * @str: The string to check.
+ * Return: 1 if numeric, 0 otherwise.
  */
-int is_numeric(const char *str) {
-    if (!str || *str == '\0')
-        return 0;
+int is_numeric(char *str)
+{
+    if (!str)
+        return (0);
 
-    for (; *str; ++str) {
-        if (*str == '-' && str == str)
-            continue;
-        if (!isdigit((unsigned char)*str))
-            return 0;
+    if (*str == '-' && str[1] == '\0')
+        return (0);
+
+    while (*str)
+    {
+        if (!isdigit(*str))
+            return (0);
+        str++;
     }
 
-    return 1;
+    return (1);
 }
 
 /**
- * op_push - Pushes an element onto the stack
- * @stack: Double pointer to the stack
- * @line_number: Line number in the Monty byte code file
+ * op_push - Push an element onto the stack.
+ * @stack: Double pointer to the beginning of the stack.
+ * @line_number: The line number in the Monty file.
  */
-void op_push(stack_t **stack, unsigned int line_number) {
+void op_push(stack_t **stack, unsigned int line_number)
+{
     char *arg = strtok(NULL, " \t\n");
 
-    if (!arg || !is_numeric(arg)) {
+    if (!arg || !is_numeric(arg))
+    {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
