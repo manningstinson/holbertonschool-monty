@@ -11,11 +11,10 @@
  *
  * Description: Parses input line to determine opcode and
  * dispatches corresponding Monty operation using the stack.
- * Supports "push," "pall," and "pint" opcodes.
+ * Supports "push," "pall," "pint," and "pop" opcodes.
  *
  * Return: None.
  */
-
 void opcode_dispatcher(char *line, stack_t **stack, unsigned int line_number) {
     char *opcode = strtok(line, " \t\n");
 
@@ -29,6 +28,8 @@ void opcode_dispatcher(char *line, stack_t **stack, unsigned int line_number) {
         op_pall(stack, line_number);
     } else if (strcmp(opcode, "pint") == 0) {
         op_pint(stack, line_number);
+    } else if (strcmp(opcode, "pop") == 0) {
+        op_pop(stack, line_number);
     } else {
         fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
         exit(EXIT_FAILURE);
