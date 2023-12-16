@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stdlib.h>  /* For malloc, free, exit */
+#include <stdio.h>
 
 void *safe_malloc(size_t size) {
     void *ptr = malloc(size);
