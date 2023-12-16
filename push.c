@@ -1,29 +1,24 @@
 #include "monty.h"
-#include <stdlib.h>  /* For atoi, malloc, exit */
-#include <ctype.h>   /* For isdigit */
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>  /* For strtok */
-
+#include <ctype.h>  // Include for isdigit
 
 void op_push(stack_t **stack, unsigned int line_number) {
-    char *arg = strtok(NULL, " \t\n");
+    /* Existing code */
 
-    if (!arg || !isdigit(*arg)) {
-        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+    if (!arg) {
+        fprintf(stderr, "L%d: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
 
-    int value = atoi(arg);
-
-    stack_t *new_node = safe_malloc(sizeof(stack_t));
-    new_node->n = value;
-    new_node->prev = NULL;
-    new_node->next = *stack;
-
-    if (*stack != NULL) {
-        (*stack)->prev = new_node;
+    /* Check if arg is a valid integer */
+    for (size_t i = 0; i < strlen(arg); i++) {
+        if (!isdigit(arg[i]) && !(i == 0 && arg[i] == '-')) {
+            fprintf(stderr, "L%d: usage: push integer\n", line_number);
+            exit(EXIT_FAILURE);
+        }
     }
 
-    *stack = new_node;
+    int value = atoi(arg);
+    /* Rest of your code */
 }
-
