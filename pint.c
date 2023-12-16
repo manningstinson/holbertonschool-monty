@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * op_pint - Prints the value at the top of the stack.
