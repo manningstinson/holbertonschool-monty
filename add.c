@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * op_add - Adds the top two elements of the stack.
