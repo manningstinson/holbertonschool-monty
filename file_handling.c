@@ -1,15 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-/**
- * read_file - Reads the content of a file and executes Monty byte codes
- * @filename: Name of the file to read
- * @stack: Double pointer to the stack
- *
- * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure
- */
 int read_file(char *filename, stack_t **stack) {
     FILE *file = fopen(filename, "r");
 
@@ -24,7 +16,6 @@ int read_file(char *filename, stack_t **stack) {
 
     while (getline(&line, &len, file) != -1) {
         line_number++;
-        /* Process the line and execute Monty byte codes */
         opcode_dispatcher(line, stack, line_number);
     }
 
