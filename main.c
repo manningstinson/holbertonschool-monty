@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 	stack_t *stack = NULL;
 
-	if (read_file(filename, &stack) == EXIT_FAILURE) 
+	if (read_file(filename, &stack) == EXIT_FAILURE)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		cleanup(stack);
